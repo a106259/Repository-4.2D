@@ -35,7 +35,11 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (gameStart) //if(gameStarted ==True)
+        string colName = collision.collider.name;
+        string colTag = collision.collider.tag;
+
+        //if (gameStart && (colName == "Paddle" || colName == "Left Border" || colName == "Right Border"))
+        if(gameStart && (colTag != "Breakable"))
         {
             GetComponent<AudioSource>().Play();
         }
